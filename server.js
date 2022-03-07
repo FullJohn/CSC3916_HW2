@@ -55,9 +55,23 @@ router.post('/signup', function(req, res) {
     }
 });
 
+router.get('/signup', function(req, res) {
+    res.json({success: false, msg: "Does not support the 'GET' method"})
+});
+router.put('/signup', function(req, res) {
+    res.json({success: false, msg: "Does not support the 'PUT' method"})
+});
+router.delete('/signup', function(req, res) {
+    res.json({success: false, msg: "Does not support the 'DELETE' method"})
+});
+router.patch('/signup', function(req, res) {
+    res.json({success: false, msg: "Does not support the 'PATCH' method"})
+});
+
 router.post('/signin', function (req, res) {
     var user = db.findOne(req.body.username);
 
+    
     if (!user) {
         res.status(401).send({success: false, msg: 'Authentication failed. User not found.'});
     } else {
@@ -71,6 +85,20 @@ router.post('/signin', function (req, res) {
         }
     }
 });
+
+router.get('/signin', function(req, res){
+    res.json({success: false, msg: "Does not support the 'GET' method"})
+});
+router.put('/signin', function(req, res) {
+    res.json({success: false, msg: "Does not support the 'PUT' method"})
+});
+router.delete('/signin', function(req, res) {
+    res.json({success: false, msg: "Does not support the 'DELETE' method"})
+});
+router.patch('/signin', function(req, res) {
+    res.json({success: false, msg: "Does not support the 'PATCH' method"})
+});
+
 
 router.route('/testcollection')
     .delete(authController.isAuthenticated, function(req, res) {
