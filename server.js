@@ -100,6 +100,44 @@ router.patch('/signin', function(req, res) {
 });
 
 
+router.route('/movies')
+    .get(function(req, res) {
+        res = res.status(200);
+        res.json({status: 200, msg: 'GET movies', headers: req.headers, query: req.query, env:process.env.UNIQUE_KEY});
+    })
+    .post(function(req, res) {
+        res = res.status(200);
+        res.json({status: 200, msg: 'movie saved', headers: req.headers, query: req.query, env:process.env.UNIQUE_KEY});
+    })
+    .put(authJwtController.isAuthenticated, function(req, res) {
+        res = res.status(200);
+        res.json({status: 200, msg: 'movie updated', headers: req.headers, query: req.query, env:process.env.UNIQUE_KEY});
+    })
+    .delete(authController.isAuthenticated, function(req, res) {
+        res = res.status(200);
+        res.json({status: 200, msg: 'movie deleted', headers: req.headers, query: req.query, env:process.env.UNIQUE_KEY});
+    })
+    .patch(function(req, res) {
+        res.json({msg: "Does not support the 'PATCH' method"});
+    });
+
+router.route('/')
+    .get(function(req, res){
+        res.json({msg: "Does not support the 'GET' method"})
+    })
+    .post(function(req, res){
+        res.json({msg: "Does not support the 'POST' method"})
+    })
+    .put(function(req, res){
+        res.json({msg: "Does not support the 'PUT' method"})
+    })
+    .delete(function(req, res){
+        res.json({msg: "Does not support the 'DELETE' method"})
+    })
+    .patch(function(req, res){
+        res.json({msg: "Does not support the 'PATCH' method"})
+    })
+    
 router.route('/testcollection')
     .delete(authController.isAuthenticated, function(req, res) {
         console.log(req.body);
