@@ -136,7 +136,7 @@ router.route('/')
     })
     .patch(function(req, res){
         res.json({msg: "Does not support the 'PATCH' method"})
-    })
+    });
     
 router.route('/testcollection')
     .delete(authController.isAuthenticated, function(req, res) {

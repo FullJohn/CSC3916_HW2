@@ -6,7 +6,7 @@
 var crypto = require('crypto');
 module.exports = function () {
     return {
-        userList: [],
+        userList: [{user: {username: "admin", password: "password"}}],
         /*
          * Save the user inside the "db".
          */
