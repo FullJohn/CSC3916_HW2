@@ -6,6 +6,7 @@ var User = require('./Users');
 var jwt = require('jsonwebtoken');
 var cors = require('cors');
 
+
 var app = express();
 module.exports = app; // for testing
 app.use(cors())
@@ -16,13 +17,6 @@ app.use(passport.initialize());
 
 var router = express.Router();
 
-router.route('/')
-    .get(function(req, res) {
-        res = "Testing Response"
-        res.send(req.body);
-    });
-
-    
 router.route('/postjwt')
     .post(authJwtController.isAuthenticated, function (req, res) {
             console.log(req.body);

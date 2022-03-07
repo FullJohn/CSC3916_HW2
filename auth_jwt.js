@@ -5,6 +5,7 @@ var ExtractJwt = require('passport-jwt').ExtractJwt;
 var User = require('./Users');
 
 var opts = {};
+require('dotenv').config();
 opts.jwtFromRequest = ExtractJwt.fromAuthHeaderWithScheme("jwt");
 opts.secretOrKey = process.env.SECRET_KEY;
 
